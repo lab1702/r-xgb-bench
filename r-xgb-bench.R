@@ -11,22 +11,14 @@ dtrain <- xgb.DMatrix(
 
 
 microbenchmark(
-  no_nthread = xgb.cv(
+  default = xgb.cv(
     data = dtrain,
     nfold = 10,
     objective = "binary:logistic",
     nrounds = 100,
     verbose = 0
   ),
-  nthread_48 = xgb.cv(
-    data = dtrain,
-    nfold = 10,
-    objective = "binary:logistic",
-    nrounds = 100,
-    verbose = 0,
-    nthread = 48
-  ),
-  nthread_01 = xgb.cv(
+  single = xgb.cv(
     data = dtrain,
     nfold = 10,
     objective = "binary:logistic",
